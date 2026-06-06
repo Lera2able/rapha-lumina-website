@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rapha Lumina Web Studio | Beautiful Websites</title>
+<meta name="description" content="Bold, glowing, Afrofuturist websites for South African businesses. Domain, hosting, email and SEO, all sorted by Rapha Lumina." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0;color:#ECEAF5;font-family:'Space Grotesk',system-ui,sans-serif;line-height:1.6;
+    background:
+      radial-gradient(900px 600px at 78% 6%, rgba(255,45,155,.18), transparent 60%),
+      radial-gradient(800px 600px at 12% 28%, rgba(139,92,246,.18), transparent 60%),
+      radial-gradient(700px 500px at 60% 92%, rgba(34,224,255,.12), transparent 60%),
+      #07060f;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:0 24px;}
+  .display{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:-.02em;line-height:1.04;}
+  .mono{font-family:'Space Mono',ui-monospace,monospace;}
+  .muted{color:#a8a3cc;}
+  .eyebrow{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:#F7941E;text-shadow:0 0 16px rgba(247,148,30,.5);}
+  .kicker{font-family:'Space Mono',monospace;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:#F7941E;}
+  .gm{background:linear-gradient(100deg,#FFCC4D,#F7941E 55%,#EE6A1E);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 24px rgba(247,148,30,.45));}
+  .spaced{font-family:'Space Mono',monospace;letter-spacing:.42em;text-transform:uppercase;font-size:.8rem;color:#cfc9f5;}
+
+  /* cosmic layers */
+  #stars{position:fixed;inset:0;width:100vw;height:100vh;z-index:0;pointer-events:none;}
+  @keyframes spinc{from{transform:translate(-50%,-50%) rotate(0)}to{transform:translate(-50%,-50%) rotate(360deg)}}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+  @keyframes twk{0%,100%{opacity:.15;transform:scale(.6)}50%{opacity:1;transform:scale(1.25)}}
+  @keyframes grad{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+  .sacred{position:fixed;top:50%;left:50%;width:min(125vh,1040px);height:min(125vh,1040px);z-index:0;pointer-events:none;opacity:.07;animation:spinc 120s linear infinite;}
+  .tw{position:fixed;width:4px;height:4px;border-radius:50%;background:#fff;z-index:0;pointer-events:none;box-shadow:0 0 10px 2px rgba(255,255,255,.85),0 0 20px 5px rgba(247,148,30,.5);animation:twk 3.6s ease-in-out infinite;}
+
+  /* buttons */
+  .cta{display:inline-flex;align-items:center;gap:.55rem;padding:.95rem 1.8rem;border-radius:999px;color:#fff;font-weight:600;cursor:pointer;border:none;
+    background:linear-gradient(92deg,#FBA838,#F2731E);box-shadow:0 0 26px rgba(247,148,30,.55);transition:transform .18s,box-shadow .18s;}
+  .cta:hover{transform:translateY(-2px);box-shadow:0 0 36px rgba(247,148,30,.75);}
+  .cta:disabled{opacity:.65;cursor:default;transform:none;}
+  .out{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.7rem;border-radius:999px;font-weight:600;color:#ECEAF5;border:1.5px solid rgba(245,183,60,.6);transition:.18s;}
+  .out:hover{border-color:#f5b73c;color:#fff;box-shadow:0 0 22px rgba(245,183,60,.4);}
+  .chip{display:inline-flex;align-items:center;gap:.4rem;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:.42rem .75rem;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid rgba(140,120,255,.3);color:#cfc9f5;}
+
+  /* topbar */
+  .topbar{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;padding:12px 24px;background:rgba(7,6,15,.6);backdrop-filter:blur(10px);border-bottom:1px solid rgba(140,120,255,.14);}
+  .brand{display:flex;align-items:center;gap:12px;}
+  .brand img{height:40px;width:40px;border-radius:50%;object-fit:cover;}
+  .brand .nm{font-family:'Space Grotesk';font-weight:700;font-size:1.12rem;line-height:1;}
+  .brand .nm small{display:block;font-family:'Space Mono';font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;color:#22e0ff;margin-top:3px;}
+  .topbar .links{display:flex;align-items:center;gap:18px;}
+  .topbar .links a.back{font-family:'Space Mono';font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:#a8a3cc;}
+  .topbar .links a.back:hover{color:#fff;}
+  @media(max-width:620px){ .topbar .links a.back{display:none;} }
+
+  section{position:relative;}
+  .bordered{border-top:1px solid rgba(140,120,255,.14);}
+  .pad{padding:80px 0;}
+
+  /* hero */
+  .herovis{position:relative;width:min(440px,90%);aspect-ratio:1;margin:0 auto;display:flex;align-items:center;justify-content:center;}
+  .portal{position:absolute;inset:0;border-radius:50%;background:conic-gradient(from 0deg,#ff2d9b,#8b5cf6,#22e0ff,#f5b73c,#ff2d9b);
+    -webkit-mask:radial-gradient(farthest-side,transparent 71%,#000 73%);mask:radial-gradient(farthest-side,transparent 71%,#000 73%);animation:spin 16s linear infinite;filter:drop-shadow(0 0 22px rgba(255,45,155,.55));}
+  .pglow{position:absolute;width:84%;height:84%;border-radius:50%;background:radial-gradient(circle,rgba(255,45,155,.45),transparent 70%);filter:blur(28px);}
+  .heroimg{position:relative;width:80%;height:80%;object-fit:cover;object-position:center top;border-radius:50%;border:2px solid rgba(255,255,255,.16);box-shadow:0 0 44px rgba(139,92,246,.5);}
+
+  .panel{position:relative;background:rgba(255,255,255,.035);border:1px solid rgba(140,120,255,.18);border-radius:18px;transition:transform .2s,box-shadow .2s,border-color .2s;}
+  .panel:hover{transform:translateY(-5px);border-color:rgba(34,224,255,.5);box-shadow:0 0 30px rgba(34,224,255,.18);}
+  .frame{position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,.12);box-shadow:0 0 50px rgba(139,92,246,.4);aspect-ratio:1/1;background:linear-gradient(135deg,#2a1840,#101030);}
+  .frame img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  .grid{display:grid;gap:24px;}
+  .g2{grid-template-columns:1fr 1fr;}
+  .g3{grid-template-columns:repeat(3,1fr);}
+  .g4{grid-template-columns:repeat(4,1fr);}
+  .gfeat{grid-template-columns:repeat(3,1fr);gap:20px;}
+  @media(max-width:900px){ .g2,.g3,.g4,.gfeat{grid-template-columns:1fr;} }
+  .items-center{align-items:center;}
+
+  /* form */
+  .input{width:100%;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:.65rem;padding:.72rem .9rem;color:#ECEAF5;font-family:'Space Grotesk',sans-serif;font-size:.95rem;outline:none;transition:border-color .15s,box-shadow .15s;}
+  .input::placeholder{color:#6f6b8c;}
+  .input:focus{border-color:#8b5cf6;box-shadow:0 0 0 3px rgba(139,92,246,.22),0 0 18px rgba(139,92,246,.4);}
+  textarea.input{min-height:110px;resize:vertical;}
+  .lbl{display:block;font-family:'Space Mono',monospace;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#a8a3cc;margin-bottom:.4rem;}
+  .opt{display:flex;gap:12px;align-items:flex-start;padding:14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);cursor:pointer;transition:.15s;margin-bottom:10px;}
+  .opt.active{border-color:rgba(34,224,255,.55);background:rgba(34,224,255,.06);box-shadow:0 0 20px rgba(34,224,255,.18);}
+  .drop{display:flex;flex-direction:column;align-items:center;gap:8px;padding:18px;border-radius:12px;border:1px dashed rgba(34,224,255,.45);background:rgba(34,224,255,.04);cursor:pointer;text-align:center;}
+  .errbox{display:none;background:rgba(255,80,80,.12);border:1px solid rgba(255,120,120,.4);color:#ffb4b4;border-radius:10px;padding:12px;font-size:.9rem;margin-top:14px;text-align:center;}
+  .errbox.show{display:block;}
+  .formdone{display:none;text-align:center;}
+  .formdone.show{display:block;}
+
+  footer.site{position:relative;z-index:1;border-top:1px solid rgba(140,120,255,.14);padding:46px 0 34px;}
+  footer.site .row{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center;}
+  .herovid{position:relative;width:min(420px,86%);margin:0 auto;display:flex;align-items:center;justify-content:center;}
+  .vglow{position:absolute;width:92%;height:92%;border-radius:50%;background:radial-gradient(circle,rgba(247,148,30,.5),transparent 70%);filter:blur(36px);}
+  .logovid{position:relative;width:100%;height:auto;border-radius:20px;box-shadow:0 0 55px rgba(247,148,30,.5);}
+  .canvawrap{position:relative;width:100%;padding-top:100%;border-radius:20px;overflow:hidden;box-shadow:0 0 55px rgba(247,148,30,.55);border:1px solid rgba(247,148,30,.35);}
+  .canvawrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+</style>
+</head>
+<body>
+
+<!-- cosmic background -->
+<canvas id="stars" aria-hidden="true"></canvas>
+<svg class="sacred" viewBox="0 0 600 600" aria-hidden="true">
+  <defs><linearGradient id="sg" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" stop-color="#f5b73c"/><stop offset="0.5" stop-color="#ff2d9b"/><stop offset="1" stop-color="#22e0ff"/>
+  </linearGradient></defs>
+  <g fill="none" stroke="url(#sg)" stroke-width="1">
+    <circle cx="300" cy="300" r="118"/><circle cx="300" cy="300" r="180"/><circle cx="300" cy="300" r="246"/>
+    <polygon points="300,70 491,190 491,410 300,530 109,410 109,190"/>
+    <path d="M300,80 L487,408 L113,408 Z"/><path d="M300,520 L113,192 L487,192 Z"/>
+  </g>
+</svg>
+<span class="tw" style="top:18%;left:12%"></span>
+<span class="tw" style="top:64%;left:7%;animation-delay:1.2s"></span>
+<span class="tw" style="top:38%;right:13%;animation-delay:.6s"></span>
+<span class="tw" style="top:80%;right:20%;animation-delay:1.9s"></span>
+<span class="tw" style="top:8%;right:34%;animation-delay:2.5s"></span>
+
+<!-- top bar -->
+<div class="topbar">
+  <a class="brand" href="#top">
+    <img src="https://miaoda-conversation-file.s3cdn.medo.dev/user-bj1l8lwrcxkw/conv-bj5sbqg4k64g/20260510/file-bj6du24rvjls.png" alt="Rapha Lumina" onerror="this.style.display='none'" />
+    <span class="nm">Rapha Lumina<small>Web Studio</small></span>
+  </a>
+  <div class="links">
+    <a class="back" href="https://raphalumina.com" target="_blank" rel="noopener">Back to shop</a>
+    <a class="cta" href="#quote" style="padding:.6rem 1.1rem;font-size:.85rem">Get a quote</a>
+  </div>
+</div>
+
+<!-- hero -->
+<section id="top">
+  <div class="wrap grid g2 items-center pad">
+    <div>
+      <span class="chip">&#10022; Rapha Lumina Web Studio</span>
+      <h1 class="display" style="font-size:clamp(3rem,8vw,6rem);margin:24px 0 0">
+        <span class="gm">BEAUTIFUL</span><br><span class="gm">WEBSITES.</span>
+      </h1>
+      <p class="spaced" style="margin-top:18px">Design &middot; Build &middot; Shine</p>
+      <p class="muted" style="font-size:1.08rem;line-height:1.7;margin-top:22px;max-width:34rem">
+        Want a beautiful website? Rapha Lumina has you covered. Bold, modern sites for South African
+        businesses, with the domain, hosting and email all sorted for you.
+      </p>
+      <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:34px">
+        <a href="#quote" class="cta">Get my website &rarr;</a>
+        <a href="#packages" class="out">View packages</a>
+      </div>
+    </div>
+    <div style="animation:floaty 7s ease-in-out infinite">
+      <div class="herovid">
+        <div class="vglow"></div>
+        <video class="logovid" src="logo-animation.mp4" autoplay loop muted playsinline poster="https://miaoda-conversation-file.s3cdn.medo.dev/user-bj1l8lwrcxkw/conv-bj5sbqg4k64g/20260510/file-bj6du24rvjls.png"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- what you get -->
+<section class="bordered">
+  <div class="wrap pad">
+    <p class="kicker">// What you get</p>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin:12px 0 0">The whole stack, sorted</h2>
+    <div class="grid gfeat" style="margin-top:48px" id="features"></div>
+  </div>
+</section>
+
+<!-- mission band -->
+<section class="bordered">
+  <div class="wrap pad grid g2 items-center">
+    <div class="frame"><img src="web-mission.png" alt="Rapha Lumina" onerror="this.style.opacity=0" /></div>
+    <div>
+      <p class="kicker">// Our promise</p>
+      <h2 class="display" style="font-size:clamp(2rem,4.5vw,3.2rem);margin:12px 0 0">Your business, <span class="gm">online and glowing.</span></h2>
+      <p class="muted" style="line-height:1.75;margin-top:20px">We blend bold, future-facing design with the practical tech a small business actually needs. You get a site that looks the part and works the part, so you can get back to your purpose.</p>
+      <a href="#quote" class="cta" style="margin-top:32px">Start your project &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<!-- packages -->
+<section class="bordered" id="packages">
+  <div class="wrap pad">
+    <p class="kicker">// Pricing</p>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin:12px 0 0">Pick your package</h2>
+    <p class="muted" style="margin-top:12px;max-width:34rem">Every quote is confirmed once we have read your brief. No surprise bills, ever.</p>
+    <div class="grid g3" style="margin-top:48px" id="packages-grid"></div>
+  </div>
+</section>
+
+<!-- how it works -->
+<section class="bordered">
+  <div class="wrap pad">
+    <p class="kicker">// Process</p>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin:12px 0 0">From idea to live</h2>
+    <div class="grid g4" style="margin-top:48px" id="steps"></div>
+  </div>
+</section>
+
+<!-- cta band -->
+<section class="bordered">
+  <div class="wrap pad grid g2 items-center">
+    <div>
+      <p class="kicker">// Join the glow</p>
+      <h2 class="display" style="font-size:clamp(2rem,4.5vw,3.2rem);margin:12px 0 0">Ready to <span class="gm">shine online?</span></h2>
+      <p class="muted" style="line-height:1.75;margin-top:20px">Tell us about your business and we will come back with a quote, usually within a day or two.</p>
+      <a href="#quote" class="cta" style="margin-top:32px">Get my website &rarr;</a>
+    </div>
+    <div class="frame"><img src="web-cta.png" alt="Rapha Lumina" onerror="this.style.opacity=0" /></div>
+  </div>
+</section>
+
+<!-- quote form -->
+<section class="bordered" id="quote">
+  <div class="wrap pad">
+    <div style="max-width:42rem;margin:0 auto;border-radius:19px;padding:1.5px;background:linear-gradient(135deg,#FFC83D,#F7941E,#EE6A1E);box-shadow:0 0 40px rgba(247,148,30,.35)">
+      <div style="border-radius:18px;background:#0c0a1a;padding:40px">
+        <div id="formLive">
+          <div style="text-align:center;margin-bottom:24px">
+            <p class="eyebrow">// Start your project</p>
+            <h2 class="display" style="font-size:clamp(1.8rem,3.5vw,2.4rem);margin-top:8px">Let's build yours</h2>
+          </div>
+          <div class="grid g2" style="gap:20px">
+            <div><label class="lbl" for="f_name">Name</label><input id="f_name" class="input" placeholder="Your full name" /></div>
+            <div><label class="lbl" for="f_email">Email address</label><input id="f_email" type="email" class="input" placeholder="you@email.com" /></div>
+            <div><label class="lbl" for="f_phone">Contact number</label><input id="f_phone" type="tel" class="input" placeholder="Call or WhatsApp" /></div>
+            <div><label class="lbl" for="f_business">Business name</label><input id="f_business" class="input" placeholder="Your business or project" /></div>
+          </div>
+          <div style="margin-top:20px"><label class="lbl" for="f_message">Message</label><textarea id="f_message" class="input" placeholder="What does your business do, and what do you need from the website?"></textarea></div>
+          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(140,120,255,.16)">
+            <p class="lbl">Your logo</p>
+            <label class="opt active" id="optHave"><input type="radio" name="logo" value="have" checked style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">I already have a logo</span><span class="muted" style="font-size:.9rem">Upload it and we will design around it.</span></span></label>
+            <div id="uploader"><label class="drop"><span style="color:#22e0ff">&#8593; Click to upload</span><span class="muted" id="fileName" style="font-size:.88rem">PNG, JPG, SVG or PDF, up to 5MB</span><input type="file" id="f_logo" accept=".png,.jpg,.jpeg,.svg,.pdf" hidden /></label></div>
+            <label class="opt" id="optMake" style="margin-top:10px"><input type="radio" name="logo" value="make" style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">Design one for me</span><span class="muted" style="font-size:.9rem">We can create a logo from R750 extra.</span></span></label>
+            <label class="opt" id="optUnsure"><input type="radio" name="logo" value="unsure" style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">Not sure yet</span><span class="muted" style="font-size:.9rem">No problem, let us chat about it.</span></span></label>
+          </div>
+          <div class="errbox" id="errBox"></div>
+          <div style="text-align:center;margin-top:26px">
+            <button class="cta" id="submitBtn" style="min-width:15rem;justify-content:center" onclick="sendEnquiry()">Send my enquiry &rarr;</button>
+            <p class="muted" style="font-size:.78rem;margin-top:12px">Or WhatsApp us directly on <a href="https://wa.me/27793330455" target="_blank" rel="noopener" style="color:#22e0ff">079 333 0455</a>.</p>
+          </div>
+        </div>
+        <div class="formdone" id="formDone">
+          <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFB23D,#F2731E);box-shadow:0 0 30px rgba(247,148,30,.5);font-size:1.8rem;color:#fff">&#10003;</div>
+          <h2 class="display" style="font-size:1.9rem">Thank you</h2>
+          <p class="muted" style="margin-top:8px">Your enquiry is on its way. We will be in touch shortly. For anything urgent, WhatsApp us on 079&nbsp;333&nbsp;0455.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap row">
+    <a class="brand" href="#top">
+      <img src="https://miaoda-conversation-file.s3cdn.medo.dev/user-bj1l8lwrcxkw/conv-bj5sbqg4k64g/20260510/file-bj6du24rvjls.png" alt="Rapha Lumina" onerror="this.style.display='none'" style="height:40px;width:40px;border-radius:50%" />
+      <span class="nm">Rapha Lumina<small>Wear Your Purpose</small></span>
+    </a>
+    <div class="muted" style="font-size:.85rem;text-align:right">
+      <a href="mailto:support@raphalumina.com" style="color:#22e0ff">support@raphalumina.com</a>
+      &nbsp;&middot;&nbsp; <a href="https://wa.me/27793330455" target="_blank" rel="noopener" style="color:#22e0ff">079 333 0455</a><br>
+      <span style="font-size:.75rem">&copy; <span id="yr"></span> Rapha Lumina (Pty) Ltd</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var ENQUIRY_ENDPOINT = "https://vousucfboetqtppjywlg.supabase.co/functions/v1/webDesignEnquiry";
+  var SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZvdXN1Y2Zib2V0cXRwcGp5d2xnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzNjE1NTIsImV4cCI6MjA5MzkzNzU1Mn0.bdwEPpWrazC1KDVG58MnbBy6Lr4YhO8gUyEuK1VykU4";
+
+  document.getElementById('yr').textContent = new Date().getFullYear();
+
+  // content
+  var ic = {
+    globe:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c2.6 2.7 2.6 15.3 0 18M12 3c-2.6 2.7-2.6 15.3 0 18"/></svg>',
+    laptop:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="11" rx="1"/><path d="M2 20h20"/></svg>',
+    cloud:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 18a4 4 0 0 0 .5-7.97A6 6 0 0 0 5.7 9.5 3.5 3.5 0 0 0 6.5 18z"/></svg>',
+    mail:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>',
+    chat:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.5 8.5 0 0 1-12.3 7.6L3 21l1.9-5.7A8.5 8.5 0 1 1 21 11.5z"/></svg>',
+    search:'<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>'
+  };
+  var features = [
+    [ic.globe,'Your own domain','yourbusiness.co.za, registered for you.'],
+    [ic.laptop,'Mobile-first build','Razor sharp on laptop, tablet and phone.'],
+    [ic.cloud,'12 months hosting','Fast and live all year on the cloud, zero setup.'],
+    [ic.mail,'Business email','A professional address on your domain.'],
+    [ic.chat,'Click-to-WhatsApp','Turn a visitor into a chat instantly.'],
+    [ic.search,'Found on Google','Search foundations done right, day one.']
+  ];
+  var fhtml = '';
+  features.forEach(function(f){
+    fhtml += '<div class="panel" style="padding:24px">'
+      + '<div style="height:48px;width:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:1px solid rgba(247,148,30,.5);background:rgba(247,148,30,.12);box-shadow:0 0 22px rgba(247,148,30,.4);color:#F7941E">'+f[0]+'</div>'
+      + '<p class="display" style="font-size:1.18rem;font-weight:600;margin:18px 0 6px">'+f[1]+'</p>'
+      + '<p class="muted" style="font-size:.9rem;margin:0">'+f[2]+'</p></div>';
+  });
+  document.getElementById('features').innerHTML = fhtml;
+
+  var packages = [
+    {n:'Starter',p:'R3 950',note:'once-off',feat:false,blurb:'Getting online for the first time.',items:['Up to 5 pages','Domain + 12 months hosting','One business email','Enquiry form to your inbox','Live in roughly a week']},
+    {n:'Business',p:'R6 500',note:'once-off',feat:true,blurb:'For a brand that wants to look unmissable.',items:['Up to 8 pages','Everything in Starter','Services / gallery sections','Click-to-WhatsApp','Google Maps + SEO']},
+    {n:'Care Plan',p:'R150',note:'per month',feat:false,blurb:'Keeps it live, safe and current.',items:['Hosting + domain renewal','Monthly edits','Backups + updates','Priority support','Cancel any time']}
+  ];
+  var phtml = '';
+  packages.forEach(function(p){
+    var inner = '<div class="panel" style="height:100%;padding:28px;display:flex;flex-direction:column'+(p.feat?';background:#0d0b1c':'')+'">'
+      + (p.feat?'<span class="mono" style="align-self:flex-start;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#08070f;background:linear-gradient(90deg,#FFC83D,#F7941E);padding:.25rem .6rem;border-radius:999px;font-weight:700;margin-bottom:12px">Most popular</span>':'')
+      + '<p class="display" style="font-size:1.5rem;font-weight:700;margin:0">'+p.n+'</p>'
+      + '<p style="margin:8px 0 0"><span class="gm display" style="font-size:2rem">'+p.p+'</span> <span class="muted mono" style="font-size:.75rem">'+p.note+'</span></p>'
+      + '<p class="muted" style="font-size:.9rem;margin:8px 0 20px">'+p.blurb+'</p><ul style="list-style:none;padding:0;margin:0 0 28px;flex:1">';
+    p.items.forEach(function(it){ inner += '<li style="display:flex;gap:10px;font-size:.9rem;margin-bottom:10px;color:#cfc9f5"><span style="color:#F7941E">&#10003;</span>'+it+'</li>'; });
+    inner += '</ul><a href="#quote" class="'+(p.feat?'cta':'out')+'" style="justify-content:center">Get a quote</a></div>';
+    phtml += p.feat ? '<div style="border-radius:19px;padding:1.5px;background:linear-gradient(135deg,#FFC83D,#F7941E,#EE6A1E);box-shadow:0 0 36px rgba(247,148,30,.4)">'+inner+'</div>' : inner;
+  });
+  document.getElementById('packages-grid').innerHTML = phtml;
+
+  var steps = [['01','Send your brief','Tell us about your business in the form below.'],['02','Pay a deposit','Half to start, balance when you are happy to launch.'],['03','We build it','We design and build around your logo, fast.'],['04','Launch + glow','We hand it over and keep it running.']];
+  var shtml = '';
+  steps.forEach(function(s){ shtml += '<div><p class="gm display" style="font-size:3rem;margin:0">'+s[0]+'</p><p class="display" style="font-size:1.18rem;font-weight:600;margin:8px 0 4px">'+s[1]+'</p><p class="muted" style="font-size:.9rem;margin:0">'+s[2]+'</p></div>'; });
+  document.getElementById('steps').innerHTML = shtml;
+
+  // logo radio toggle
+  var opts = {have:document.getElementById('optHave'),make:document.getElementById('optMake'),unsure:document.getElementById('optUnsure')};
+  var uploader = document.getElementById('uploader');
+  document.querySelectorAll('input[name="logo"]').forEach(function(r){
+    r.addEventListener('change', function(){
+      Object.keys(opts).forEach(function(k){ opts[k].classList.remove('active'); });
+      opts[r.value].classList.add('active');
+      uploader.style.display = (r.value === 'have') ? 'block' : 'none';
+    });
+  });
+
+  // file
+  var fileInput = document.getElementById('f_logo');
+  var fileName = document.getElementById('fileName');
+  var logoData = null;
+  document.querySelector('.drop').addEventListener('click', function(){ fileInput.click(); });
+  fileInput.addEventListener('change', function(){
+    var file = fileInput.files[0]; logoData = null;
+    if(!file){ return; }
+    if(file.size > 5*1024*1024){ showError('That file is larger than 5MB. Please choose a smaller logo.'); fileInput.value=''; return; }
+    var reader = new FileReader();
+    reader.onload = function(){ logoData = {name:file.name, type:file.type||'application/octet-stream', base64:String(reader.result).split(',')[1]}; fileName.textContent = file.name + ' ready to send'; fileName.style.color = '#22e0ff'; };
+    reader.onerror = function(){ showError('Sorry, that file could not be read.'); };
+    reader.readAsDataURL(file);
+  });
+
+  function showError(m){ var b=document.getElementById('errBox'); b.textContent=m; b.classList.add('show'); }
+  function clearError(){ document.getElementById('errBox').classList.remove('show'); }
+
+  function sendEnquiry(){
+    clearError();
+    var name=document.getElementById('f_name').value.trim();
+    var email=document.getElementById('f_email').value.trim();
+    var phone=document.getElementById('f_phone').value.trim();
+    var business=document.getElementById('f_business').value.trim();
+    var message=document.getElementById('f_message').value.trim();
+    var choice=document.querySelector('input[name="logo"]:checked').value;
+    if(!name||!email||!phone){ showError('Please fill in at least your name, email and contact number.'); return; }
+    if(!/^\S+@\S+\.\S+$/.test(email)){ showError('That email address does not look right.'); return; }
+    var btn=document.getElementById('submitBtn'); btn.disabled=true; btn.textContent='Sending...';
+    var payload={name:name,email:email.toLowerCase(),phone:phone,business:business,message:message,logoChoice:choice,logo:(choice==='have'&&logoData)?logoData:null};
+    fetch(ENQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+SUPABASE_ANON_KEY,'apikey':SUPABASE_ANON_KEY},body:JSON.stringify(payload)})
+      .then(function(res){ if(!res.ok) throw new Error('status '+res.status); document.getElementById('formLive').style.display='none'; document.getElementById('formDone').classList.add('show'); })
+      .catch(function(err){ console.error(err); btn.disabled=false; btn.textContent='Send my enquiry'; showError('Something went wrong. Please try again, or WhatsApp us on 079 333 0455.'); });
+  }
+
+  // cosmic starfield
+  (function(){
+    var canvas=document.getElementById('stars'); var ctx=canvas.getContext('2d');
+    var dpr=Math.min(window.devicePixelRatio||1,2); var w=0,h=0,pts=[];
+    var neon=['255,45,155','34,224,255','245,183,60','139,92,246'];
+    function build(){
+      w=window.innerWidth; h=window.innerHeight; canvas.width=w*dpr; canvas.height=h*dpr;
+      canvas.style.width=w+'px'; canvas.style.height=h+'px'; ctx.setTransform(dpr,0,0,dpr,0,0);
+      var n=Math.min(120,Math.floor((w*h)/13000)); pts=[];
+      for(var i=0;i<n;i++){ pts.push({x:Math.random()*w,y:Math.random()*h,vx:(Math.random()-.5)*.22,vy:(Math.random()-.5)*.22,r:Math.random()*1.5+.5,t:Math.random()*Math.PI*2,c:Math.random()<.16?neon[Math.floor(Math.random()*neon.length)]:'255,255,255'}); }
+    }
+    function frame(){
+      ctx.clearRect(0,0,w,h);
+      for(var i=0;i<pts.length;i++){ for(var j=i+1;j<pts.length;j++){ var a=pts[i],b=pts[j]; var d=Math.hypot(a.x-b.x,a.y-b.y); if(d<132){ ctx.strokeStyle='rgba(150,120,255,'+(1-d/132)*.2+')'; ctx.lineWidth=.6; ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y); ctx.stroke(); } } }
+      for(var k=0;k<pts.length;k++){ var p=pts[k]; p.x+=p.vx; p.y+=p.vy; p.t+=.03; if(p.x<0)p.x=w; if(p.x>w)p.x=0; if(p.y<0)p.y=h; if(p.y>h)p.y=0; var tw=.5+.5*Math.sin(p.t); var glow=p.c!=='255,255,255'; ctx.beginPath(); ctx.arc(p.x,p.y,p.r*(glow?1.6:1),0,Math.PI*2); ctx.fillStyle='rgba('+p.c+','+(glow?.4+.5*tw:.2+.5*tw)+')'; ctx.shadowColor='rgba('+p.c+',.9)'; ctx.shadowBlur=glow?12:0; ctx.fill(); }
+      ctx.shadowBlur=0; requestAnimationFrame(frame);
+    }
+    build(); frame(); window.addEventListener('resize',build);
+  })();
+</script>
+</body>
+</html>
