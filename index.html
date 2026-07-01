@@ -132,6 +132,24 @@
   .project-links{display:flex;flex-wrap:wrap;gap:12px;margin-top:22px;}
   .proofnote{margin-top:28px;padding:16px 18px;border-radius:14px;border:1px solid rgba(140,120,255,.2);background:rgba(255,255,255,.04);color:#cfc9f5;}
   .proofnote strong{color:#fff;}
+  .packnote{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px;}
+  .packnote .item{padding:16px 18px;border-radius:14px;background:rgba(255,255,255,.04);border:1px solid rgba(140,120,255,.18);}
+  .packnote .item strong{display:block;color:#fff;font-size:.9rem;margin-bottom:6px;}
+  .pkgmeta{display:grid;gap:10px;margin:0 0 18px;}
+  .pkgmeta .row{display:flex;justify-content:space-between;gap:14px;padding:10px 12px;border-radius:12px;background:rgba(255,255,255,.04);border:1px solid rgba(140,120,255,.14);}
+  .pkgmeta .row span{font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;color:#a8a3cc;font-family:'Space Mono',monospace;}
+  .pkgmeta .row strong{font-size:.9rem;color:#fff;text-align:right;}
+  .trustgrid{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
+  .trustcard{padding:26px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(140,120,255,.18);}
+  .trustlist{list-style:none;padding:0;margin:20px 0 0;}
+  .trustlist li{display:flex;gap:10px;margin-bottom:12px;color:#d8d3f1;font-size:.95rem;}
+  .trustlist li span{color:#22e0ff;}
+  .faqitem{padding:18px 0;border-top:1px solid rgba(140,120,255,.16);}
+  .faqitem:first-child{border-top:none;padding-top:0;}
+  .faqitem h3{margin:0 0 8px;font-size:1rem;color:#fff;}
+  .faqitem p{margin:0;color:#b9b4d8;font-size:.94rem;line-height:1.7;}
+  .quotegrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:start;}
+  @media(max-width:900px){ .packnote,.trustgrid,.quotegrid{grid-template-columns:1fr;} }
 </style>
 </head>
 <body>
@@ -206,7 +224,7 @@
       <div style="max-width:42rem">
         <p class="kicker">// Featured work</p>
         <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin:12px 0 0">Proof from real projects</h2>
-        <p class="muted" style="margin-top:16px;line-height:1.75">From school websites to legal services and private operational systems, our work is built to look sharp and support real-day workflows.</p>
+        <p class="muted" style="margin-top:16px;line-height:1.75">From school websites and ecommerce to legal services and private operational systems, our work is built to look sharp and support real-day workflows.</p>
       </div>
       <a href="work.html" class="out">Open full portfolio</a>
     </div>
@@ -270,7 +288,7 @@
       </article>
     </div>
     <div class="proofnote">
-      <strong>Selected private systems are shown carefully.</strong> Some projects include internal tools for schools and farm operations, but sensitive screens and records are not displayed publicly.
+      <strong>Selected private systems are shown carefully.</strong> Our wider body of work includes ecommerce, education, legal and agriculture projects, but sensitive screens and records are not displayed publicly.
     </div>
   </div>
 </section>
@@ -305,7 +323,21 @@
   <div class="wrap pad">
     <p class="kicker">// Packages</p>
     <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin:12px 0 0">Pick your package</h2>
-    <p class="muted" style="margin-top:12px;max-width:34rem">Choose the kind of site you need and we will quote you once we have read your brief.</p>
+    <p class="muted" style="margin-top:12px;max-width:42rem">Choose the kind of site you need and we will quote it to match your exact scope. You get clearer fit guidance here first, then a tailored quote once we have read your brief.</p>
+    <div class="packnote">
+      <div class="item">
+        <strong>Tailored quotes</strong>
+        We price according to the pages, features and content your project actually needs.
+      </div>
+      <div class="item">
+        <strong>Best-fit guidance</strong>
+        Each package shows who it suits best so you can choose faster with less guesswork.
+      </div>
+      <div class="item">
+        <strong>Care plan included</strong>
+        Hosting, domain renewal, backups, updates and support are covered by the annual care plan.
+      </div>
+    </div>
     <div class="grid g3" style="margin-top:48px" id="packages-grid"></div>
       <div class="carenote"><span class="carelabel">Please note</span>Every website comes with a care plan, billed once a year at R500 per annum, which covers hosting, domain renewal, backups, updates and support.</div>
   </div>
@@ -336,40 +368,95 @@
   </div>
 </section>
 
+<!-- trust and faq -->
+<section class="bordered">
+  <div class="wrap pad trustgrid">
+    <div class="trustcard">
+      <p class="kicker">// Why people enquire</p>
+      <h2 class="display" style="font-size:clamp(1.9rem,4vw,2.7rem);margin:12px 0 0">A simple process, with the technical side handled.</h2>
+      <p class="muted" style="margin-top:16px;line-height:1.75">Most clients do not want to figure out domains, hosting, email setup and site structure on their own. Rapha Lumina handles the practical setup so you can focus on the business itself.</p>
+      <ul class="trustlist">
+        <li><span>&#10003;</span>Domain, hosting and business email can be arranged for you</li>
+        <li><span>&#10003;</span>Designed for mobile first, not adapted as an afterthought</li>
+        <li><span>&#10003;</span>Suitable for brochure sites, private portals and lightweight business tools</li>
+        <li><span>&#10003;</span>Clear quote process before build work begins</li>
+      </ul>
+    </div>
+    <div class="trustcard">
+      <p class="kicker">// FAQ</p>
+      <h2 class="display" style="font-size:clamp(1.9rem,4vw,2.7rem);margin:12px 0 0">Questions people usually ask</h2>
+      <div style="margin-top:20px">
+        <div class="faqitem">
+          <h3>How long does a website take?</h3>
+          <p>Timelines depend on scope, but smaller brochure sites move faster than database or ecommerce builds. The quote will include a realistic delivery range for your project.</p>
+        </div>
+        <div class="faqitem">
+          <h3>Do you handle domain and hosting?</h3>
+          <p>Yes. If you want, domain setup, hosting and the technical launch process can all be handled for you.</p>
+        </div>
+        <div class="faqitem">
+          <h3>Can you redesign my existing website?</h3>
+          <p>Yes. You can come with an old site, a half-finished idea, or a completely new project and we can rebuild from there.</p>
+        </div>
+        <div class="faqitem">
+          <h3>Can you build private systems too?</h3>
+          <p>Yes. Selected projects already include private school and farm operations tools, and custom internal features can be scoped where needed.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- quote form -->
 <section class="bordered" id="quote">
   <div class="wrap pad">
-    <div style="max-width:42rem;margin:0 auto;border-radius:19px;padding:1.5px;background:linear-gradient(135deg,#FFC83D,#F7941E,#EE6A1E);box-shadow:0 0 40px rgba(247,148,30,.35)">
-      <div style="border-radius:18px;background:#0c0a1a;padding:40px">
-        <div id="formLive">
-          <div style="text-align:center;margin-bottom:24px">
-            <p class="eyebrow">// Start your project</p>
-            <h2 class="display" style="font-size:clamp(1.8rem,3.5vw,2.4rem);margin-top:8px">Let's build yours</h2>
-          </div>
-          <div class="grid g2" style="gap:20px">
-            <div><label class="lbl" for="f_name">Name</label><input id="f_name" class="input" placeholder="Your full name" /></div>
-            <div><label class="lbl" for="f_email">Email address</label><input id="f_email" type="email" class="input" placeholder="you@email.com" /></div>
-            <div><label class="lbl" for="f_phone">Contact number</label><input id="f_phone" type="tel" class="input" placeholder="Call or WhatsApp" /></div>
-            <div><label class="lbl" for="f_business">Business name</label><input id="f_business" class="input" placeholder="Your business or project" /></div>
-          </div>
-          <div style="margin-top:20px"><label class="lbl" for="f_message">Message</label><textarea id="f_message" class="input" placeholder="What does your business do, and what do you need from the website?"></textarea></div>
-          <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(140,120,255,.16)">
-            <p class="lbl">Your logo</p>
-            <label class="opt active" id="optHave"><input type="radio" name="logo" value="have" checked style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">I already have a logo</span><span class="muted" style="font-size:.9rem">Upload it and we will design around it.</span></span></label>
-            <div id="uploader"><label class="drop"><span style="color:#22e0ff">&#8593; Click to upload</span><span class="muted" id="fileName" style="font-size:.88rem">PNG, JPG, SVG or PDF, up to 5MB</span><input type="file" id="f_logo" accept=".png,.jpg,.jpeg,.svg,.pdf" hidden /></label></div>
-            <label class="opt" id="optMake" style="margin-top:10px"><input type="radio" name="logo" value="make" style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">Design one for me</span><span class="muted" style="font-size:.9rem">We can create a logo from R750 extra.</span></span></label>
-            <label class="opt" id="optUnsure"><input type="radio" name="logo" value="unsure" style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">Not sure yet</span><span class="muted" style="font-size:.9rem">No problem, let us chat about it.</span></span></label>
-          </div>
-          <div class="errbox" id="errBox"></div>
-          <div style="text-align:center;margin-top:26px">
-            <button class="cta" id="submitBtn" style="min-width:15rem;justify-content:center" onclick="sendEnquiry()">Send my enquiry &rarr;</button>
-            <p class="muted" style="font-size:.78rem;margin-top:12px">Or WhatsApp us directly on <a href="https://wa.me/27793330455" target="_blank" rel="noopener" style="color:#22e0ff">079 333 0455</a>.</p>
-          </div>
+    <div class="quotegrid">
+      <div class="trustcard">
+        <p class="kicker">// Before you send</p>
+        <h2 class="display" style="font-size:clamp(1.9rem,4vw,2.7rem);margin:12px 0 0">What helps us quote well</h2>
+        <p class="muted" style="margin-top:16px;line-height:1.75">The clearer your brief, the easier it is to recommend the right package and quote the project properly. Even a short message is fine if it includes the basics.</p>
+        <ul class="trustlist">
+          <li><span>&#10003;</span>What your business does</li>
+          <li><span>&#10003;</span>Whether you need a simple site, portal, or custom functionality</li>
+          <li><span>&#10003;</span>Any examples of websites you like</li>
+          <li><span>&#10003;</span>Whether you already have a logo, content or images</li>
+        </ul>
+        <div class="proofnote" style="margin-top:18px">
+          We usually recommend the best-fit package after reading your brief, so you do not have to choose perfectly on your own.
         </div>
-        <div class="formdone" id="formDone">
-          <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFB23D,#F2731E);box-shadow:0 0 30px rgba(247,148,30,.5);font-size:1.8rem;color:#fff">&#10003;</div>
-          <h2 class="display" style="font-size:1.9rem">Thank you</h2>
-          <p class="muted" style="margin-top:8px">Your enquiry is on its way. We will be in touch shortly. For anything urgent, WhatsApp us on 079&nbsp;333&nbsp;0455.</p>
+      </div>
+      <div style="border-radius:19px;padding:1.5px;background:linear-gradient(135deg,#FFC83D,#F7941E,#EE6A1E);box-shadow:0 0 40px rgba(247,148,30,.35)">
+        <div style="border-radius:18px;background:#0c0a1a;padding:40px">
+          <div id="formLive">
+            <div style="text-align:center;margin-bottom:24px">
+              <p class="eyebrow">// Start your project</p>
+              <h2 class="display" style="font-size:clamp(1.8rem,3.5vw,2.4rem);margin-top:8px">Let's build yours</h2>
+            </div>
+            <div class="grid g2" style="gap:20px">
+              <div><label class="lbl" for="f_name">Name</label><input id="f_name" class="input" placeholder="Your full name" /></div>
+              <div><label class="lbl" for="f_email">Email address</label><input id="f_email" type="email" class="input" placeholder="you@email.com" /></div>
+              <div><label class="lbl" for="f_phone">Contact number</label><input id="f_phone" type="tel" class="input" placeholder="Call or WhatsApp" /></div>
+              <div><label class="lbl" for="f_business">Business name</label><input id="f_business" class="input" placeholder="Your business or project" /></div>
+            </div>
+            <div style="margin-top:20px"><label class="lbl" for="f_message">Message</label><textarea id="f_message" class="input" placeholder="What does your business do, and what do you need from the website?"></textarea></div>
+            <div style="margin-top:20px;padding-top:20px;border-top:1px solid rgba(140,120,255,.16)">
+              <p class="lbl">Your logo</p>
+              <label class="opt active" id="optHave"><input type="radio" name="logo" value="have" checked style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">I already have a logo</span><span class="muted" style="font-size:.9rem">Upload it and we will design around it.</span></span></label>
+              <div id="uploader"><label class="drop"><span style="color:#22e0ff">&#8593; Click to upload</span><span class="muted" id="fileName" style="font-size:.88rem">PNG, JPG, SVG or PDF, up to 5MB</span><input type="file" id="f_logo" accept=".png,.jpg,.jpeg,.svg,.pdf" hidden /></label></div>
+              <label class="opt" id="optMake" style="margin-top:10px"><input type="radio" name="logo" value="make" style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">Design one for me</span><span class="muted" style="font-size:.9rem">We can create a logo from R750 extra.</span></span></label>
+              <label class="opt" id="optUnsure"><input type="radio" name="logo" value="unsure" style="accent-color:#22e0ff;margin-top:3px" /><span><span class="display" style="font-size:.95rem;font-weight:600;display:block">Not sure yet</span><span class="muted" style="font-size:.9rem">No problem, let us chat about it.</span></span></label>
+            </div>
+            <div class="errbox" id="errBox"></div>
+            <div style="text-align:center;margin-top:26px">
+              <button class="cta" id="submitBtn" style="min-width:15rem;justify-content:center" onclick="sendEnquiry()">Send my enquiry &rarr;</button>
+              <p class="muted" style="font-size:.78rem;margin-top:12px">Or WhatsApp us directly on <a href="https://wa.me/27793330455" target="_blank" rel="noopener" style="color:#22e0ff">079 333 0455</a>.</p>
+            </div>
+          </div>
+          <div class="formdone" id="formDone">
+            <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#FFB23D,#F2731E);box-shadow:0 0 30px rgba(247,148,30,.5);font-size:1.8rem;color:#fff">&#10003;</div>
+            <h2 class="display" style="font-size:1.9rem">Thank you</h2>
+            <p class="muted" style="margin-top:8px">Your enquiry is on its way. We will be in touch shortly. For anything urgent, WhatsApp us on 079&nbsp;333&nbsp;0455.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -425,9 +512,9 @@
   document.getElementById('features').innerHTML = fhtml;
 
   var packages = [
-    {n:'Starter',sub:'Static Website',feat:false,blurb:'A clean, fast site to get you online.',items:['Up to 5 pages','Your own domain','12 months hosting','One business email','Enquiry form to your inbox']},
-    {n:'Business',sub:'Includes Database',feat:true,blurb:'A dynamic site with a database behind it.',items:['Everything in Starter','Database-driven content','Admin dashboard','Click-to-WhatsApp','Google Maps + SEO']},
-    {n:'Ecommerce',sub:'Online Shop',feat:false,blurb:'Sell your products online, end to end.',items:['Everything in Business','Online shop and product catalogue','Secure checkout and payments','Order management','Customer accounts']}
+    {n:'Starter',sub:'Static Website',feat:false,blurb:'A clean, fast site to get you online.',best:'Small businesses and new brands',time:'Usually quickest launch',quote:'Tailored after your brief',items:['Up to 5 pages','Your own domain','12 months hosting','One business email','Enquiry form to your inbox']},
+    {n:'Business',sub:'Includes Database',feat:true,blurb:'A dynamic site with a database behind it.',best:'Growing organisations that need more function',time:'More scope, more flexibility',quote:'Tailored after your brief',items:['Everything in Starter','Database-driven content','Admin dashboard','Click-to-WhatsApp','Google Maps + SEO']},
+    {n:'Ecommerce',sub:'Online Shop',feat:false,blurb:'Sell your products online, end to end.',best:'Businesses selling products online',time:'Depends on products and setup',quote:'Tailored after your brief',items:['Everything in Business','Online shop and product catalogue','Secure checkout and payments','Order management','Customer accounts']}
   ];
   var phtml = '';
   packages.forEach(function(p){
@@ -435,7 +522,12 @@
       + (p.feat?'<span class="mono" style="align-self:flex-start;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#08070f;background:linear-gradient(90deg,#FFC83D,#F7941E);padding:.25rem .6rem;border-radius:999px;font-weight:700;margin-bottom:12px">Most popular</span>':'')
       + '<p class="display" style="font-size:1.5rem;font-weight:700;margin:0">'+p.n+'</p>'
       + '<p class="mono" style="font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:#F7941E;margin:7px 0 0">'+p.sub+'</p>'
-      + '<p class="muted" style="font-size:.9rem;margin:14px 0 20px">'+p.blurb+'</p><ul style="list-style:none;padding:0;margin:0 0 28px;flex:1">';
+      + '<p class="muted" style="font-size:.9rem;margin:14px 0 18px">'+p.blurb+'</p>'
+      + '<div class="pkgmeta">'
+      +   '<div class="row"><span>Best for</span><strong>'+p.best+'</strong></div>'
+      +   '<div class="row"><span>Timing</span><strong>'+p.time+'</strong></div>'
+      +   '<div class="row"><span>Quote</span><strong>'+p.quote+'</strong></div>'
+      + '</div><ul style="list-style:none;padding:0;margin:0 0 28px;flex:1">';
     p.items.forEach(function(it){ inner += '<li style="display:flex;gap:10px;font-size:.9rem;margin-bottom:10px;color:#cfc9f5"><span style="color:#F7941E">&#10003;</span>'+it+'</li>'; });
     inner += '</ul><a href="#quote" class="'+(p.feat?'cta':'out')+'" style="justify-content:center">Get a quote</a></div>';
     phtml += p.feat ? '<div style="border-radius:19px;padding:1.5px;background:linear-gradient(135deg,#FFC83D,#F7941E,#EE6A1E);box-shadow:0 0 36px rgba(247,148,30,.4)">'+inner+'</div>' : inner;
