@@ -11,11 +11,11 @@
 <meta property="og:description" content="Learn how Rapha Lumina approaches web design, ecommerce and private digital tools for growing organisations in South Africa." />
 <meta property="og:type" content="website" />
 <meta property="og:url" content="https://web.raphalumina.com/about.html" />
-<meta property="og:image" content="https://web.raphalumina.com/publicweb-hero.png" />
+<meta property="og:image" content="https://web.raphalumina.com/assets/social/about-page.png" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="About Rapha Lumina Web Studio | Web Design South Africa" />
 <meta name="twitter:description" content="Learn how Rapha Lumina approaches web design, ecommerce and private digital tools for growing organisations in South Africa." />
-<meta name="twitter:image" content="https://web.raphalumina.com/publicweb-hero.png" />
+<meta name="twitter:image" content="https://web.raphalumina.com/assets/social/about-page.png" />
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -97,7 +97,12 @@
   .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:28px;}
   .stat{padding:18px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid rgba(140,120,255,.18);}
   .stat strong{display:block;font-size:1.45rem;color:#fff;}
+  .testimonial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:28px;}
+  .testimonial-card{padding:24px;border-radius:18px;background:rgba(255,255,255,.04);border:1px solid rgba(140,120,255,.18);}
+  .testimonial-card .label{font-family:'Space Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:#22e0ff;}
+  .testimonial-card p{margin:14px 0 0;color:#d8d3f1;line-height:1.75;font-size:.94rem;}
   @media(max-width:720px){.stats{grid-template-columns:1fr;}}
+  @media(max-width:960px){.testimonial-grid{grid-template-columns:1fr;}}
   footer.site{border-top:1px solid rgba(140,120,255,.14);padding:42px 0 34px;}
   footer.site .row{display:flex;flex-wrap:wrap;gap:22px;justify-content:space-between;align-items:center;}
 </style>
@@ -111,6 +116,7 @@
   <div class="links">
     <a class="nav" href="index.html">Home</a>
     <a class="nav" href="services.html">Services</a>
+    <a class="nav" href="contact.html">Contact</a>
     <a class="nav" href="work.html">Work</a>
     <a class="back" href="index.html#quote">Start a project</a>
   </div>
@@ -192,6 +198,28 @@
 
 <section class="bordered">
   <div class="wrap pad">
+    <p class="kicker">// Client feedback</p>
+    <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin:12px 0 0">The testimonial framework is ready for approved client quotes.</h2>
+    <p class="muted" style="margin-top:16px;max-width:46rem;line-height:1.75">Rather than inventing praise, the site now has a dedicated section ready for real client feedback as approvals come in. That means trust can grow cleanly without needing another design pass later.</p>
+    <div class="testimonial-grid">
+      <div class="testimonial-card">
+        <span class="label">School project</span>
+        <p>Add an approved quote here about communication, parent access to information, or the benefits of a better structured school website.</p>
+      </div>
+      <div class="testimonial-card">
+        <span class="label">Service client</span>
+        <p>Add an approved quote here about stronger credibility, clearer services, or how the site helped make first contact easier.</p>
+      </div>
+      <div class="testimonial-card">
+        <span class="label">Store or brand</span>
+        <p>Add an approved quote here about brand presentation, product flow, or how the online experience feels more polished and trustworthy.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bordered">
+  <div class="wrap pad">
     <div class="panel card">
       <p class="kicker">// Next steps</p>
       <h2 class="display" style="font-size:clamp(2rem,4vw,3rem);margin:12px 0 0">See the work, explore services, or start your brief.</h2>
@@ -215,6 +243,8 @@
       <a href="services.html" style="color:#22e0ff">Services</a>
       &nbsp;&middot;&nbsp;
       <a href="work.html" style="color:#22e0ff">Work</a>
+      &nbsp;&middot;&nbsp;
+      <a href="contact.html" style="color:#22e0ff">Contact</a>
       &nbsp;&middot;&nbsp;
       <a href="index.html#quote" style="color:#22e0ff">Quote</a>
       &nbsp;&middot;&nbsp;
