@@ -1,0 +1,28 @@
+/*
+  X-Frame-Options: SAMEORIGIN
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/work.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+/favicon.svg
+  Cache-Control: public, max-age=86400
+
+/logo-animation.mp4
+  Cache-Control: public, max-age=604800, immutable
+
+/publicweb-cta.png
+  Cache-Control: public, max-age=604800, immutable
+
+/publicweb-hero.png
+  Cache-Control: public, max-age=604800, immutable
+
+/publicweb-mission.png
+  Cache-Control: public, max-age=604800, immutable
+
+/assets/work/*
+  Cache-Control: public, max-age=604800, immutable
