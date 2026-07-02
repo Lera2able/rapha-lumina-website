@@ -158,6 +158,59 @@
   </div>
 </section>
 
+<section class="bordered" id="testimonial">
+  <div class="wrap pad grid g2" style="align-items:start">
+    <div>
+      <p class="kicker">// Testimonial</p>
+      <h2 class="display" style="font-size:clamp(2.2rem,4vw,3.2rem);margin:12px 0 0">Share a short testimonial</h2>
+      <p class="muted" style="margin-top:18px;line-height:1.75;max-width:46rem">If Rapha Lumina built your website or digital tool and you would like to share a short public note, submit it here. Testimonials are only published with your permission, and can be made anonymous if you prefer.</p>
+      <ul class="trustlist" style="margin-top:22px">
+        <li><span>&#10003;</span>Short and specific beats long and generic</li>
+        <li><span>&#10003;</span>We can link it to the relevant case study (optional)</li>
+        <li><span>&#10003;</span>We will confirm wording with you before publishing</li>
+      </ul>
+    </div>
+    <div class="panel card">
+      <div id="t_formLive">
+        <div style="text-align:center;margin-bottom:18px">
+          <p class="eyebrow">// Submit feedback</p>
+          <h3 class="display" style="font-size:1.35rem;margin:8px 0 0">Testimonial form</h3>
+        </div>
+        <div class="grid g2" style="gap:20px">
+          <div><label class="lbl" for="t_name">Name</label><input id="t_name" class="input" placeholder="Your name" /></div>
+          <div><label class="lbl" for="t_email">Email address</label><input id="t_email" type="email" class="input" placeholder="you@email.com" /></div>
+          <div><label class="lbl" for="t_phone">Contact number</label><input id="t_phone" type="tel" class="input" placeholder="Call or WhatsApp" /></div>
+          <div><label class="lbl" for="t_business">Organisation</label><input id="t_business" class="input" placeholder="Business / school / organisation" /></div>
+        </div>
+        <div style="margin-top:20px">
+          <label class="lbl" for="t_message">Testimonial</label>
+          <textarea id="t_message" class="input" placeholder="What did we build, what improved, and what would you tell someone considering Rapha Lumina?"></textarea>
+        </div>
+        <div style="margin-top:16px;display:grid;gap:10px">
+          <label style="display:flex;gap:10px;align-items:flex-start;color:#cfc9f5;font-size:.9rem;line-height:1.55">
+            <input type="checkbox" id="t_consent" style="margin-top:4px;accent-color:#22e0ff" />
+            <span>I give permission for Rapha Lumina to publish this testimonial on the website.</span>
+          </label>
+          <label style="display:flex;gap:10px;align-items:flex-start;color:#cfc9f5;font-size:.9rem;line-height:1.55">
+            <input type="checkbox" id="t_anon" style="margin-top:4px;accent-color:#22e0ff" />
+            <span>Publish without my name (anonymous).</span>
+          </label>
+        </div>
+        <div class="errbox" id="t_errBox"></div>
+        <div style="text-align:center;margin-top:22px">
+          <button class="cta" id="t_submitBtn" style="min-width:15rem;justify-content:center" onclick="sendTestimonial()">Send testimonial &rarr;</button>
+          <p class="muted" style="font-size:.78rem;margin-top:12px">Prefer email? Send it to <a href="mailto:support@raphalumina.com" style="color:#22e0ff">support@raphalumina.com</a>.</p>
+        </div>
+      </div>
+      <div class="formdone" id="t_formDone">
+        <div style="width:64px;height:64px;border-radius:50%;margin:0 auto 18px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#22e0ff,#8b5cf6);box-shadow:0 0 30px rgba(34,224,255,.35);font-size:1.8rem;color:#07060f">&#10003;</div>
+        <h3 class="display" style="font-size:1.7rem">Thank you</h3>
+        <p class="muted" style="margin-top:8px">We have received your testimonial. We will confirm the wording with you before publishing.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer class="site">
   <div class="wrap row">
     <a class="brand" href="index.html"><img src="https://miaoda-conversation-file.s3cdn.medo.dev/user-bj1l8lwrcxkw/conv-bj5sbqg4k64g/20260510/file-bj6du24rvjls.png" alt="Rapha Lumina" onerror="this.style.display='none'" /><span class="nm">Rapha Lumina<small>Web Studio</small></span></a>
@@ -215,6 +268,37 @@
     fetch(ENQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+SUPABASE_ANON_KEY,'apikey':SUPABASE_ANON_KEY},body:JSON.stringify(payload)})
       .then(function(res){ if(!res.ok) throw new Error('status '+res.status); document.getElementById('formLive').style.display='none'; document.getElementById('formDone').classList.add('show'); })
       .catch(function(err){ console.error(err); btn.disabled=false; btn.textContent='Send my enquiry'; showError('Something went wrong. Please try again, or WhatsApp us on 079 333 0455.'); });
+  }
+
+  function showTestimonialError(m){ var b=document.getElementById('t_errBox'); b.textContent=m; b.classList.add('show'); }
+  function clearTestimonialError(){ document.getElementById('t_errBox').classList.remove('show'); }
+  function sendTestimonial(){
+    clearTestimonialError();
+    var name=document.getElementById('t_name').value.trim();
+    var email=document.getElementById('t_email').value.trim();
+    var phone=document.getElementById('t_phone').value.trim();
+    var business=document.getElementById('t_business').value.trim();
+    var testimonial=document.getElementById('t_message').value.trim();
+    var consent=document.getElementById('t_consent').checked;
+    var anon=document.getElementById('t_anon').checked;
+
+    if(!name||!email||!phone||!testimonial){ showTestimonialError('Please fill in your name, email, contact number and the testimonial.'); return; }
+    if(!/^\S+@\S+\.\S+$/.test(email)){ showTestimonialError('That email address does not look right.'); return; }
+    if(!consent){ showTestimonialError('Please confirm you give permission for us to publish this testimonial.'); return; }
+
+    var btn=document.getElementById('t_submitBtn'); btn.disabled=true; btn.textContent='Sending...';
+    var msg =
+      "[TESTIMONIAL SUBMISSION]\n\n" +
+      "Testimonial:\n" + testimonial + "\n\n" +
+      "Organisation: " + (business||"(not provided)") + "\n" +
+      "Publish anonymously: " + (anon ? "Yes" : "No") + "\n" +
+      "Consent to publish: Yes\n" +
+      "Source page: " + window.location.href;
+
+    var payload={name:name,email:email.toLowerCase(),phone:phone,business:(business||"Testimonial"),message:msg,logoChoice:"unsure",logo:null};
+    fetch(ENQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+SUPABASE_ANON_KEY,'apikey':SUPABASE_ANON_KEY},body:JSON.stringify(payload)})
+      .then(function(res){ if(!res.ok) throw new Error('status '+res.status); document.getElementById('t_formLive').style.display='none'; document.getElementById('t_formDone').classList.add('show'); })
+      .catch(function(err){ console.error(err); btn.disabled=false; btn.textContent='Send testimonial →'; showTestimonialError('Something went wrong. Please try again, or email us on support@raphalumina.com.'); });
   }
 </script>
 </body>
