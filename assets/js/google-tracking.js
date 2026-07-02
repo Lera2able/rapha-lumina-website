@@ -16,7 +16,11 @@
   }
 
   function getConfig(){
-    return window.RL_GOOGLE_ADS_SEND_TO || {};
+    return Object.assign({
+      leadSubmit: 'AW-18293900454/TAWxCIzMzckcEKaJm5NE',
+      whatsappClick: 'AW-18293900454/B_qnCI_MzckcEKaJm5NE',
+      phoneClick: 'AW-18293900454/52j3CJLMzckcEKaJm5NE'
+    }, window.RL_GOOGLE_ADS_SEND_TO || {});
   }
 
   var tracking = {
@@ -50,13 +54,19 @@
       });
       fireAdsConversion(getConfig().whatsappClick, {});
     },
-    trackPhoneClick: function(source){
+    trackPhoneClick: function(source, url){
       fireEvent('contact', {
         event_category: 'contact',
         event_label: source || 'phone_click',
         method: 'phone'
       });
-      fireAdsConversion(getConfig().phoneClick, {});
+      fireAdsConversion(getConfig().phoneClick, {
+        event_callback: function(){
+          if(typeof url !== 'undefined'){
+            window.location = url;
+          }
+        }
+      });
     }
   };
 
@@ -72,7 +82,11 @@
     }
 
     if(href.indexOf('tel:') === 0){
-      tracking.trackPhoneClick(label);
+      event.preventDefault();
+      tracking.trackPhoneClick(label, href);
+      window.setTimeout(function(){
+        window.location = href;
+      }, 800);
     }
   });
 
