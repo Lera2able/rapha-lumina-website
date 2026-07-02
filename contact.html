@@ -9,6 +9,7 @@
 
   gtag('config', 'AW-18293900454');
 </script>
+<script defer src="assets/js/google-tracking.js"></script>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Contact Rapha Lumina Web Studio | Request a Quote</title>
@@ -127,7 +128,7 @@
       <div style="margin-top:24px">
         <p class="kicker">// Direct contact</p>
         <p class="muted" style="margin:10px 0 0"><a href="mailto:support@raphalumina.com" style="color:#22e0ff">support@raphalumina.com</a></p>
-        <p class="muted" style="margin:8px 0 0"><a href="https://wa.me/27793330455" target="_blank" rel="noopener" style="color:#22e0ff">079 333 0455</a></p>
+        <p class="muted" style="margin:8px 0 0"><a href="tel:+27793330455" style="color:#22e0ff">079 333 0455</a></p>
       </div>
     </div>
     <div style="border-radius:19px;padding:1.5px;background:linear-gradient(135deg,#FFC83D,#F7941E,#EE6A1E);box-shadow:0 0 40px rgba(247,148,30,.35)">
@@ -275,7 +276,7 @@
     var btn=document.getElementById('submitBtn'); btn.disabled=true; btn.textContent='Sending...';
     var payload={name:name,email:email.toLowerCase(),phone:phone,business:business,message:message,logoChoice:choice,logo:(choice==='have'&&logoData)?logoData:null};
     fetch(ENQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+SUPABASE_ANON_KEY,'apikey':SUPABASE_ANON_KEY},body:JSON.stringify(payload)})
-      .then(function(res){ if(!res.ok) throw new Error('status '+res.status); document.getElementById('formLive').style.display='none'; document.getElementById('formDone').classList.add('show'); })
+      .then(function(res){ if(!res.ok) throw new Error('status '+res.status); if(window.RLTracking){ window.RLTracking.trackLeadSubmit('contact_quote_form'); } document.getElementById('formLive').style.display='none'; document.getElementById('formDone').classList.add('show'); })
       .catch(function(err){ console.error(err); btn.disabled=false; btn.textContent='Send my enquiry'; showError('Something went wrong. Please try again, or WhatsApp us on 079 333 0455.'); });
   }
 
@@ -306,7 +307,7 @@
 
     var payload={name:name,email:email.toLowerCase(),phone:phone,business:(business||"Testimonial"),message:msg,logoChoice:"unsure",logo:null};
     fetch(ENQUIRY_ENDPOINT,{method:'POST',headers:{'Content-Type':'application/json','Authorization':'Bearer '+SUPABASE_ANON_KEY,'apikey':SUPABASE_ANON_KEY},body:JSON.stringify(payload)})
-      .then(function(res){ if(!res.ok) throw new Error('status '+res.status); document.getElementById('t_formLive').style.display='none'; document.getElementById('t_formDone').classList.add('show'); })
+      .then(function(res){ if(!res.ok) throw new Error('status '+res.status); if(window.RLTracking){ window.RLTracking.trackTestimonialSubmit('testimonial_form'); } document.getElementById('t_formLive').style.display='none'; document.getElementById('t_formDone').classList.add('show'); })
       .catch(function(err){ console.error(err); btn.disabled=false; btn.textContent='Send testimonial →'; showTestimonialError('Something went wrong. Please try again, or email us on support@raphalumina.com.'); });
   }
 </script>
