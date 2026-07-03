@@ -195,6 +195,10 @@
 </head>
 <body>
 
+<div id="localWarning" style="display:none;background:#3a1f0a;border-bottom:1px solid #FF8327;color:#ffd9a8;padding:12px 20px;text-align:center;font-size:.88rem;">
+  ⚠️ You're viewing this file locally, so sending won't work here (browser security). Please test it from the live link: <a href="https://web.raphalumina.com/clients/unity-gym-intake.html" style="color:#FFC702;font-weight:700;">web.raphalumina.com/clients/unity-gym-intake.html</a>
+</div>
+
 <header class="hero">
   <div class="wrap hero-inner">
     <div class="logo-card">
@@ -486,11 +490,21 @@
     }
   });
 
+  // Warn if this page is opened as a local file, since sending won't work there
+  if (window.location.protocol === "file:"){
+    document.getElementById("localWarning").style.display = "block";
+  }
+
   async function submitForm(){
     const btn = document.getElementById("submitBtn");
 
     if (WEB3FORMS_KEY.indexOf("PASTE_YOUR_KEY_HERE") !== -1){
       toast("Form not set up yet — use Copy for now");
+      return;
+    }
+
+    if (window.location.protocol === "file:"){
+      toast("Can't send from a local file — please use the live link");
       return;
     }
 
